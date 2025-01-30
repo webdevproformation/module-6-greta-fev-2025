@@ -54,4 +54,3 @@ $b = ['avocado', 'apple', 'banana'];
 // découvrir des fonctions natives de PHP 
 
 // https://www.php.net/manual/fr/ref.array.php
-// 
