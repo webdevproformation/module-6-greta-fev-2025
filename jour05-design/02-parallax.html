@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./02-style.css" />
+  </head>
+  <body>
+    <!-- https://unsplash.com/photos/FRbHwdke1lE -->
+    <section>
+      <img src="./top.png" alt="" class="top" />
+      <img src="./bottom.png" alt="" class="bottom" />
+      <h2 class="titre">Parallax</h2>
+    </section>
+    <article>
+      <h3>Réaliser un effect parallax avec du css et du javascript</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, nam
+        deleniti culpa ab iusto eligendi inventore, officiis fugit delectus
+        deserunt voluptatibus veniam quaerat perferendis saepe tempore eius
+        neque cumque magni.
+      </p>
+      <p>
+        Consequuntur non dolor unde minus aut deleniti consectetur laborum
+        itaque! Assumenda architecto veritatis quaerat, nemo corrupti et
+        cupiditate a, molestias voluptas at minima praesentium dicta provident
+        vel sed quidem libero.
+      </p>
+      <p>
+        Distinctio esse temporibus hic animi quidem accusamus eos quam a.
+        Maiores hic, consequatur voluptatum similique nemo ea suscipit
+        dignissimos consectetur perferendis nobis repudiandae iste dolor,
+        dolorem blanditiis doloremque officia ex?
+      </p>
+      <p>
+        Reprehenderit repudiandae quaerat iure maiores vitae aperiam nisi
+        voluptate explicabo aut consectetur totam illum autem facere quod,
+        incidunt maxime. Deleniti quaerat ullam iusto tempora sequi cumque odio,
+        tempore nisi sint.
+      </p>
+    </article>
+
+    <script>
+      (function () {
+        const top = document.querySelector(".top");
+        const bottom = document.querySelector(".bottom");
+        const titre = document.querySelector(".titre");
+
+        window.addEventListener("scroll", function () {
+          const value = window.scrollY;
+          top.style.top = `${value * 0.5}px`; // descendre 50% de la vitesse du scroll
+          bottom.style.top = `${value * 0.15}px`; // descendre 15% de la vitesse du scroll
+          titre.style.top = `${value}px`; // descendre à la même vitesse que le scroll de la page
+        });
+      })();
+    </script>
+</body>
+</html>
