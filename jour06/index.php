@@ -23,9 +23,20 @@ if(empty($page_demandee)){
 }else if(isset($page_demandee["page"])){
     // page de profil 
 
-    // logique ... => verifier est ce que les identifiants sont valides 
+    // var_dump($_POST); 
+    // die(); 
 
-    require_once "vue/header.php";
-    require_once "vue/profil.php";
-    require_once "vue/footer.php";
+    // logique ... => verifier est ce que les identifiants sont valides 
+    if($_POST["login"] === $profil["login"] && $_POST["password"] === $profil["password"]){
+
+        require_once "vue/header.php";
+        require_once "vue/profil.php";
+        require_once "vue/footer.php";
+    }else {
+        require_once "vue/header.php";
+        require_once "vue/400.php"; // erreur 400 Bad Credentials
+        require_once "vue/footer.php";
+    }
+
+    
 }
