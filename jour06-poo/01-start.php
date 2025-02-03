@@ -71,5 +71,5 @@ echo $r->hauteur . "<br>" ;
 // unite => mois
 // competences => tableau indexé 3 valeurs => PHP HTML CSS
 
-// une fois que la class est créée créer un $f 
+// une fois que la class est créée créer une variable $f qui est un objet de type Formation 
 // afficher dans le navigateur le contenu de la propriété unite 
