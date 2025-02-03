@@ -5,6 +5,10 @@ declare(strict_types = 1);
 // http://192.168.33.10/jour06/index.php
 
 // base de données
+/* $connexion = new PDO("url bdd" , "..." , "...");
+$stmt = $connexion->prepare("SELECT * FROM user WHERE login = :login AND password = :password");
+$profil = $stmt->execute( [ "login" => $_POST["login"] , "password" => $_POST["password"]] ); */
+
 $profil = [
     "login" => "a@yahoo.fr",
     "password" => "azerty"
