@@ -1,6 +1,8 @@
-function Button({toggle})
+function Button({setShow})
 {
-    return <button id="btn" onClick={toggle}>open modal</button>
+    return <button id="btn" onClick={() => setShow(function(show){
+        return !show 
+    })}>open modal</button>
 }
 
 export default Button ; 

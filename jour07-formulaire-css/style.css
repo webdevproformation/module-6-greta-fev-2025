@@ -1,0 +1,96 @@
+/* reset */
+
+body, h1, h2, h3, p{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: sans-serif;
+}
+ul, li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+/* zone entête*/
+.header_title{
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.header_subtitle{
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 1rem 0 1rem 0;
+    font-weight: normal;
+    color:grey; 
+}
+
+.header_break{
+    width: 40px;
+    text-align: center;
+    border-top: 4px solid #000;
+}
+
+/* partie centrale*/
+
+main{
+    display: flex;
+    justify-content: space-between;
+}
+
+main form{
+    width: 70%;
+}
+
+main aside{
+    width: 28%;
+}
+
+/* formulaire */
+
+.form-control{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.4rem 0.5rem;
+}
+.form-btn{
+    text-align: right;
+}
+.form-text{
+    text-align: center;
+    padding: 0.6rem 0;
+
+}
+
+.form-btn input{
+    margin-top: 1.5rem;
+    border: 1px solid #000;
+    color:black;
+    background: white;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+}
+
+aside{
+    font-size: 0.9rem;
+}
+
+iframe{
+    width: 100%;
+    height: 250px;
+}
+.aside_title{
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
