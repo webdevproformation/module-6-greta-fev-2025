@@ -9,3 +9,177 @@ ul, li{
     padding: 0;
     list-style: none;
 }
+body{
+    font-family: sans-serif;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* class utilitaire */
+
+.container{
+    max-width: 1200px;
+    width:80%;
+    margin: 0 auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.d-flex{
+    display: flex;
+}
+
+/*variable de css */
+
+:root{
+    --bleu : rgb(97, 97, 236); 
+    --margin-title : 3rem 0 0.8rem 0;
+}
+
+/* menu */
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+}
+
+.menu-link{
+    color: white;
+    font-weight: bold;
+}
+.menu-nav{
+    background: var(--bleu);
+}
+
+.main-title{
+    margin: var(--margin-title); 
+    color:var(--bleu);
+}
+.main-hr{
+    border-color: var(--bleu);
+}
+
+.article-voyage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bleu);
+    padding-bottom: 3rem ;
+    margin-bottom: 3rem ;
+}
+
+.article-voyage-reverse{
+    flex-direction: row-reverse;
+}
+
+.article-img , .article-texte{
+    width: 49%;
+}
+
+.article-title{
+    width: 100%;
+}
+
+.article-texte p{
+   margin-bottom: 1rem;
+}
+
+/* .article-img-reserve{
+    order:3;
+}
+
+.article-texte-reverse{
+    order:2;
+} */
+
+/*tableau */
+
+table{
+    margin: 2rem 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th{
+    border:1px solid black;
+    padding: 0.7rem ;
+}
+tbody tr:nth-child(2n + 1){
+    background: grey;
+}
+
+.plage{
+    background: url("img/fond.jpg");
+    height: 600px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.plage-container{
+    display: flex;
+    height: 100%;
+}
+.plage-article{
+    margin: auto 0;
+    width: 50%;
+    background: white;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.plage-titre{
+    font-size: 2.6rem;
+    margin-bottom: 1em;
+}
+
+.plage-article p {
+    margin-bottom: 1rem;
+}
+
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: url("img/gloriette.jpg");
+    background-size: cover;
+    background-position: center 20%;
+    padding: 2rem ;
+}
+
+.form-input , textarea{
+    width: 48.9%;
+}
+.form-btn{
+    width: 100%;
+}
+
+input[type="text"]{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    border:1px solid black;
+}
+
+textarea{
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    border:1px solid black;
+}
+
+.footer{
+    background: var(--bleu);
+    color : white; 
+    padding: 3rem 0;
+}
+
+.footer-logo{
+    width: 180px;
+}
