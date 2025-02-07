@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            text-align: justify;
+        }
+        .container > * {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: 1s; 
+        }
+
+        .container > *.show{
+            opacity: 1;
+            transform: translateX(0);
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lorem ipsum dolor sit amet.</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, sint quisquam veritatis quaerat laborum vero iure obcaecati eligendi tempora excepturi id minima dignissimos, quod, veniam magnam. Suscipit itaque at iusto.</p>
+        <p>Velit ducimus numquam eos rem, quasi vitae quia voluptatibus reprehenderit alias, eligendi possimus aspernatur quam odit totam harum! Voluptatum vero architecto nostrum adipisci rerum vel a, eum tenetur delectus suscipit?</p>
+        <p>Quaerat fugit, magnam ipsum est dolores, laboriosam soluta exercitationem dolor, molestias ipsa deserunt vero. Sunt explicabo laboriosam suscipit veniam, exercitationem commodi architecto tempora quo obcaecati quasi sed ut voluptas necessitatibus!</p>
+        <p>In optio amet, nulla numquam explicabo unde reiciendis aliquam similique iste id nam. Quas, alias! Explicabo itaque a, laudantium ipsa vero exercitationem, earum delectus ut unde nostrum numquam, quidem iste!</p>
+        <p>Eligendi dolor voluptate facilis esse temporibus quia ex, tempore consequatur quam, reiciendis repellat, corrupti saepe at culpa deleniti provident expedita pariatur? Harum veritatis sequi consequuntur quae sint quibusdam molestias ea.</p>
+        <!-- ((h2>lorem3)+(p*5>lorem10))*4 -->
+        <h2>Lorem, ipsum dolor.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, suscipit.</p>
+        <p>Officiis accusamus amet at illum suscipit cupiditate quo similique quos!</p>
+        <p>Nulla provident accusantium, sit facilis rerum officia corporis doloribus iusto!</p>
+        <p>Quaerat voluptas velit autem aliquam architecto saepe animi dignissimos quam.</p>
+        <p>Inventore corporis laboriosam minima aspernatur rem ipsam ullam ex pariatur.</p>
+        <h2>Omnis, ad culpa.</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, modi.</p>
+        <p>Deleniti quia nihil repellat officia perferendis, expedita cupiditate praesentium voluptas!</p>
+        <p>Repellat error iste deserunt totam debitis eum esse est provident?</p>
+        <p>Voluptatum, debitis molestiae distinctio obcaecati iure quas praesentium ipsam. Quos.</p>
+        <p>Quod, expedita! Sequi sapiente nesciunt amet adipisci totam repellendus quae!</p>
+        <h2>Eveniet, voluptatibus accusantium.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, pariatur.</p>
+        <p>Totam, suscipit. Quas distinctio quo aliquid blanditiis aliquam laboriosam? Deleniti.</p>
+        <p>Sit nisi, ratione adipisci cumque quo numquam dolorem dolores minima!</p>
+        <p>Dolorum dolores omnis sunt quasi blanditiis a tenetur accusamus laboriosam?</p>
+        <p>Dolorum facere dicta harum provident deleniti. Rerum consequuntur iste facilis.</p>
+        <h2>Assumenda, obcaecati neque!</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, inventore!</p>
+        <p>Voluptatem iusto, debitis eveniet ducimus asperiores aspernatur ratione esse hic.</p>
+        <p>Ea repellat cum ratione, facilis totam optio repudiandae molestiae voluptates.</p>
+        <p>Ex, adipisci odit. Magni culpa ducimus velit cum eveniet nihil!</p>
+        <p>Vero ea nulla officiis repellendus sapiente dolores quos similique adipisci?</p>
+        <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256884417!2d2.2922979798512486!3d48.85837007938886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1642778768214!5m2!1sfr!2sfr" width="600" height="450" src="#" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <script>
+        const elementAObserver = document.querySelectorAll("h1, h2, p, iframe"); // #1
+const observer = new IntersectionObserver( function( balisesAObserver  ){ // #2
+    balisesAObserver.forEach( function(el){
+         
+        if(el.intersectionRatio > 0.5){
+            el.target.classList.add("show" )
+            observer.unobserve(el.target)
+        }
+       
+        if(el.target.nodeName == "IFRAME" && el.intersectionRatio > 0.5){
+            const src = el.target.getAttribute("data-src");
+            el.target.src = src;
+            observer.unobserve(el.target)
+            console.log(src)
+        }
+    } )
+} , {
+    threshold : 1
+}  )
+
+elementAObserver.forEach(function(el){
+    observer.observe(el)
+})
+
+
+    </script>
+</body>
+</html>

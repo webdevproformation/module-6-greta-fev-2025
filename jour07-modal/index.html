@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d-none{
+            display: none;
+        }
+        #modal{
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            padding: 40px;
+            color:white;
+            text-align: center;
+        }
+        #modal img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #modal .close{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            
+            font-size: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="btn">open modal</button>
+        <section id="modal" class="d-none">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01" src="mario.jpg" alt="" />
+            <div id="caption">super mario</div>
+        </section>
+    </div>
+    <script>
+        const btn = document.querySelector("#btn");
+        const modal = document.querySelector("#modal") ; 
+        btn.addEventListener("click", function(){
+            modal.classList.toggle("d-none")
+        })
+        modal.addEventListener("click", function(){
+            modal.classList.toggle("d-none")
+        })
+    </script>
+</body>
+</html>
