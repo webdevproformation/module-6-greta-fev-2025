@@ -17,3 +17,16 @@
 - http://xxxxxxxxxxxxxxxx/jour10/index.php?page=connexion
 - cette page ne contient QUE une balise 
 - `<h1>accès au back office</h1>`
+
+# créer une base de données pour ce projet 
+
+<http://192.168.33.10/pma>
+
+```sql
+SELECT p.nom , p.duree, p.unite , t.nom  
+FROM projets AS p
+JOIN projets_technos  AS pt 
+ON pt.projet_id = p.id 
+JOIN technos AS t 
+ON t.id = pt.techno_id;
+```

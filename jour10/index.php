@@ -17,7 +17,12 @@ $routes = [
     "contact" => "contact",
     "connexion" => "connexion"
 ]; 
+
+require_once "Model/BDD.php";
+// var_dump(BDD::getInstance()); 
 require_once "Controller/FrontController.php"; 
+
+
 if(array_key_exists($page , $routes)){
     $p = new FrontController();
     $p->{$routes[$page]}();
