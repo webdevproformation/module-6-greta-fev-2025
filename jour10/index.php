@@ -15,7 +15,8 @@ $routes = [
     "presentation" => "presentation", // si dans le $_GET["page"] == "presentation" => exécuter la méthode 
                                      // presentation dans la class FrontController 
     "contact" => "contact",
-    "connexion" => "connexion"
+    "connexion" => "connexion",
+    "inscription" => "inscription"
 ]; 
 
 require_once "Model/BDD.php";

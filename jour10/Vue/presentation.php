@@ -4,12 +4,12 @@
     <section class="row">
         <?php foreach ($projets as $projet ) : ?>
             <div class="col-3">
-                <article class="card">
+                <article class="card h-100" >
                     <div class="card-body">
                         <h2 class="card-title"><?php echo $projet["nom"] ?></h2>
                         <p class="card-text">durée : <?php echo $projet["duree"] . " " .$projet["unite"] ?></p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" >
                         <?php foreach(explode("," , $projet["technos"]) as $techno) : ?>
                             <span class="badge bg-primary me-2"><?php echo $techno ?></span>
                         <?php  endforeach ?>

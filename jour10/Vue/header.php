@@ -23,6 +23,9 @@
                     <a href="http://192.168.33.10/jour10/index.php?page=contact" class="nav-link">Nous contacter</a>
                 </li>
                 <li class="nav-item">
+                    <a href="http://192.168.33.10/jour10/index.php?page=inscription" class="nav-link">Inscription</a>
+                </li>
+                <li class="nav-item">
                     <a href="http://192.168.33.10/jour10/index.php?page=connexion" class="nav-link">Connexion</a>
                 </li>
             </ul>

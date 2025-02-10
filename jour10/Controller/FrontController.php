@@ -46,6 +46,16 @@ class FrontController{
         $this->render("connexion") ; 
     }
 
+    public function inscription(){
+
+        var_dump($_POST); 
+
+        $data = [
+            "titre" => "s'inscrire sur le site"
+        ];
+        $this->render("inscription", $data);
+    }
+
     /**
      * $template_name => le nom du fichier de vue à sélectionner
      * $data => tableau qui contient l'ensemble des valeurs à envoyer à la vue 
