@@ -7,10 +7,20 @@
 // attention l'adresse est différente les utilisateurs de vagrant 
 
 - http://192.168.33.10/pma
-
 - http://localhost/phpMyAdmin   (XAMPP)
-- 
-- 
+
+
+## mot de passe pour l'utilisateur root
+
+```sh
+vagrant ssh 
+sudo su 
+mysql -u root
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+FLUSH PRIVILEGES;
+```
+
+
 - ## cas pratique
 
 via phpMyAdmin
