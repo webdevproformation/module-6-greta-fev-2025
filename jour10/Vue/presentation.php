@@ -10,7 +10,7 @@
                         <p class="card-text">durée : <?php echo $projet["duree"] . " " .$projet["unite"] ?></p>
                     </div>
                     <div class="card-footer">
-                        <?php foreach($projet["technos"] as $techno) : ?>
+                        <?php foreach(explode("," , $projet["technos"]) as $techno) : ?>
                             <span class="badge bg-primary me-2"><?php echo $techno ?></span>
                         <?php  endforeach ?>
                     </div>

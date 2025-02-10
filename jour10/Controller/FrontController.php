@@ -19,22 +19,21 @@ class FrontController{
 
     public function presentation()
     {
+
+        $sql = "
+            SELECT p.nom , p.duree, p.unite , GROUP_CONCAT( t.nom )  AS technos
+            FROM projets AS p
+            JOIN projets_technos  AS pt 
+            ON pt.projet_id = p.id 
+            JOIN technos AS t 
+            ON t.id = pt.techno_id
+            GROUP BY p.nom
+            ORDER BY p.id
+        ";
+
         $data = [
             "titre" => "présentation du projet",
-            "projets" => [
-                [ 
-                    "nom" => "créer un site internet en PHP",
-                    "duree" => 2,
-                    "unite" => "mois",
-                    "technos" => ["PHP" , "JS" , "HTML" ]
-                ],
-                [
-                    "nom" => "blog sur le jardinage",
-                    "duree" => 1,
-                    "unite" => "mois",
-                    "technos" => ["React", "Nodejs"]
-                ]
-            ]
+            "projets" => BDD::getInstance()->query($sql)
         ];
         $this->render("presentation" , $data);
     }
