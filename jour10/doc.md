@@ -30,3 +30,25 @@ ON pt.projet_id = p.id
 JOIN technos AS t 
 ON t.id = pt.techno_id;
 ```
+
+
+## jour11
+
+- créer le controller ErreurController
+- créer le controller AbstractController
+- expliqué le role de abstract ??
+- migrer la méthode render vers AbstractController
+- changer la portée de render de private  à protected 
+- faire hérité ErreurController et FrontController à la class AbstractController
+
+- nous allons lancer le back office de notre site internet
+- première étape pour créer une back office => créer une table `user`
+
+id PK
+email VARCHAR(255)
+password VARCHAR(255)
+role VARCHAR(255) DEFAULT redacteur
+dt_creation DATETIME DEFAULT maintenant 
+
+- 
+- 

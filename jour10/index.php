@@ -21,11 +21,16 @@ $routes = [
 
 require_once "Model/BDD.php";
 // var_dump(BDD::getInstance()); 
+require_once "Controller/AbstractController.php"; 
 require_once "Controller/FrontController.php"; 
+require_once "Controller/ErreurController.php"; 
 
 
 if(array_key_exists($page , $routes)){
     $p = new FrontController();
     $p->{$routes[$page]}();
+}else {
+    $p = new ErreurController();
+    $p->erreur(404 , "la page demandée n'existe pas");
 }
 // http://192.168.33.10/jour10/index.php

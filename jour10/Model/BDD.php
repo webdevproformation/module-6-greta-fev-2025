@@ -23,9 +23,9 @@ class BDD{
         $this->connexion = new PDO($dsn, $login , $password);
     }
 
-    public function query( string $sql  ){
+    public function query( string $sql  , array $params = []){
         $stmt = $this->connexion->prepare($sql);
-        $stmt->execute();
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     }
 
