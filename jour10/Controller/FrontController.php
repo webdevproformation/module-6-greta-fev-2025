@@ -43,7 +43,10 @@ class FrontController extends AbstractController {
     }
 
     public function connexion(){
-        $this->render("connexion") ; 
+        $data = [
+            "titre" => "accéder au back office du site"
+        ];
+        $this->render("connexion" , $data) ; 
     }
 
     public function inscription(){
@@ -80,7 +83,7 @@ class FrontController extends AbstractController {
             sleep(random_int(0,3));
 
             // anti brut force 
-            
+
             // double authentification
         }
 
