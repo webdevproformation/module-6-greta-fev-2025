@@ -43,8 +43,55 @@ class FrontController extends AbstractController {
     }
 
     public function connexion(){
+
+        $erreurs = [];
+        if(!empty($_POST)){
+            // récupérer les valeurs saisies dans le formulaire 
+            $email = isset($_POST["email"]) ? $_POST["email"] : ""; // CTRL + MAJ + D
+            $password = isset($_POST["password"]) ? $_POST["password"] : ""; // CTRL + MAJ + D
+
+            // verifier que les valeurs saisies sont conformes !!! 
+            // email valid
+            if(!filter_var($email , FILTER_VALIDATE_EMAIL)){
+                $erreurs[] = "l'email n'est pas conforme"; 
+            }      
+            // password valid
+            if(!preg_match("#(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}#", $password)){
+                $erreurs[] = "le password doit contenir au minimum 8 lettres avec minuscule, majuscule et chiffre"; 
+            }
+
+
+            // est ce que les identifiants saisis existent dans la base de données 
+            $user = BDD::getInstance()->query("SELECT * FROM user WHERE email = :email ", [ "email" => $email ]); 
+
+            if(empty($user)){
+                $erreurs[] = "aucun utilisateur n'a l'email saisit";
+            }else{
+                $password_hash = $user[0]["password"]; 
+                // comparer le mot de passe en clair saisit dans le formulaire AVEC le mot de passe hashé qui est dans la base de données 
+                if(!password_verify($_POST["password"] , $password_hash)){
+                    $erreurs[] = "le mot de passe saisit n'est pas conforme" ; 
+                }
+            }
+
+            // si OK => $_SESSION  => super globale qui va suivre l'utilisateur tout au long 
+            // de son utilisation du back office 
+            // $_SESSION => chariot qui vous accompagne pendant l'utilisation du back office
+            if(count($erreurs) === 0){
+                $_SESSION["user"] = [
+                    "email" => $user[0]["email"],
+                    "role" => $user[0]["role"]
+                ];
+                header("Location: http://192.168.33.10/jour10/index.php?page=admin/dashboard");
+                die();
+            }
+        }
+
+        
         $data = [
-            "titre" => "accéder au back office du site"
+            "titre" => "accéder au back office du site",
+            // si KO => message d'erreur 
+            "erreurs" => $erreurs 
         ];
         $this->render("connexion" , $data) ; 
     }

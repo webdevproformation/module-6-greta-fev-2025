@@ -13,4 +13,7 @@
             <input type="submit" class="btn btn-outline-info" value="connexion">
         </div>
     </form>
+    <?php foreach ($erreurs as $erreur) : ?>
+        <div class="alert bg-warning"><?php echo $erreur ?></div>
+    <?php endforeach ?> 
 </main>
