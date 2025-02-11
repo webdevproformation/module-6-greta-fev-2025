@@ -14,4 +14,8 @@ class ErreurController extends AbstractController {
         $this->render("erreur" , $data);
     }
 
+    public function erreur401(){
+        $this->erreur(401, "Vous devez vous connecter au préalable pour accéder à cette page"); 
+    }
+
 }

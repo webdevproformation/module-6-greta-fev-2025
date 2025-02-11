@@ -161,6 +161,11 @@ class FrontController extends AbstractController {
         $this->render("inscription", $data);
     }
 
-   
+    public function deconnexion(){
+        unset($_SESSION["user"]);
+        session_destroy();
+        header("Location: http://192.168.33.10/jour10/index.php?page=connexion");
+    }
+
 
 }

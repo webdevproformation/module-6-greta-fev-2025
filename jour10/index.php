@@ -18,7 +18,9 @@ $routes = [
     "contact" => ["contact", "FrontController"],
     "connexion" => ["connexion", "FrontController"],
     "inscription" => ["inscription", "FrontController"],
-    "admin/dashboard" => ["dashboard", "BackController"]
+    "admin/dashboard" => ["dashboard", "BackController"],
+    "deconnexion" => ["deconnexion", "FrontController"],
+    "erreur401" => ["erreur401", "ErreurController"],
 ]; 
 
 require_once "Model/BDD.php";

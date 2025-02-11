@@ -22,12 +22,18 @@
                 <li class="nav-item">
                     <a href="http://192.168.33.10/jour10/index.php?page=contact" class="nav-link">Nous contacter</a>
                 </li>
-                <li class="nav-item">
+                <?php if( !isset($_SESSION["user"]) ) : ?>
+                 <li class="nav-item">
                     <a href="http://192.168.33.10/jour10/index.php?page=inscription" class="nav-link">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a href="http://192.168.33.10/jour10/index.php?page=connexion" class="nav-link">Connexion</a>
                 </li>
+                <?php else : ?>
+                <li class="nav-item">
+                    <a href="http://192.168.33.10/jour10/index.php?page=deconnexion" class="nav-link">Déconnexion</a>
+                </li>
+                <?php endif ?>
             </ul>
         </nav>
     </header>  
