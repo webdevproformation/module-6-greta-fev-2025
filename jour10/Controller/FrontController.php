@@ -48,7 +48,7 @@ class FrontController extends AbstractController {
 
     public function inscription(){
 
-        var_dump($_POST); 
+        // var_dump($_POST); 
         $erreurs = [] ; 
         if(!empty($_POST)){
             // récupérer les valeurs saisies dans le formulaire via la variable $_POST
@@ -75,15 +75,29 @@ class FrontController extends AbstractController {
             if(!empty($user)){
                 $erreurs[] = "l'email soumis est déjà utilisé, veuillez en choisir un autre"; 
             }
-           
+
+            // 
+            sleep(random_int(0,3));
+
+            // anti brut force 
+            
+            // double authentification
         }
 
         // var_dump($erreurs); 
         // si c'est conforme => INSERT INTO user  (attention le password DOIT être hashé)
-        if(count($erreurs) === 0){
+        $success = [];
+        if(count($erreurs) === 0 && !empty($_POST)){
             
-
-
+            BDD::getInstance()->query("INSERT INTO user (email , password) VALUES (:email , :password)" , [
+                    "email" =>  $_POST["email"],
+                    "password" => password_hash($_POST["password"] , PASSWORD_BCRYPT)
+                    // Azerty1234!
+                    // $2y$10$jHzfzKJkFKdNvy9G1IAW/OYj4Rh7S15I.5VfTpKETZ.U8d9vZq6BC
+            ]);
+            // mot de passe hashé ne peut pas être déhashé par le gestionnaire du site internet 
+            // trouver le mot de passe en clair => UPDATE 
+            $success[] = "votre profil a bien été créé en base de données, veuillez vous connecter pour accéder à l'espace de gestion"; 
 
         }
         // message pour lui dire que l'INSERT s'est bien réalisé 
@@ -91,7 +105,8 @@ class FrontController extends AbstractController {
         $data = [
             "titre" => "s'inscrire sur le site",
             // si ce n'est pas bon => afficher sur le formulaire les erreurs 
-            "erreurs" => $erreurs 
+            "erreurs" => $erreurs ,
+            "success" => $success
         ];
         $this->render("inscription", $data);
     }

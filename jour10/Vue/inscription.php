@@ -18,4 +18,7 @@
     <?php foreach ($erreurs as $erreur) : ?>
         <div class="alert bg-warning"><?php echo $erreur ?></div>
     <?php endforeach ?> 
+    <?php foreach ($success as $succes) : ?>
+        <div class="alert bg-success"><?php echo $succes ?></div>
+    <?php endforeach ?> 
 </main>
