@@ -67,4 +67,8 @@ public function inscription()
 
 ## restart le projet 
 
+## note sur les serveur MAMP sur requêtes avec GROUP BY
 
+```sql
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+```

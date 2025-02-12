@@ -22,4 +22,36 @@ class BackController extends AbstractController
 
         $this->render("back/dashboard", $data);
     }
+
+
+    public function projet_index(){
+        $data = [
+            "titre" => "Gestion des projets",
+            "projets" => BDD::getInstance()->query("SELECT * FROM projets")
+        ];
+
+        $this->render("back/projet_index", $data);
+    }
+
+
+
+    public function projet_new(){
+        $data = [
+            "titre" => "Créer un nouveau projet"
+        ];
+
+        $this->render("back/projet_form", $data);
+    }
+
+
+
+
+    public function user_index(){
+        $data = [
+            "titre" => "Gestion des utilisateurs",
+            "users" => BDD::getInstance()->query("SELECT id , email , role , DATE_FORMAT(dt_creation , '%d/%m/%Y') AS dt_creation FROM user")
+        ];
+
+        $this->render("back/users_index", $data);
+    }
 }

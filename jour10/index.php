@@ -21,6 +21,9 @@ $routes = [
     "admin/dashboard" => ["dashboard", "BackController"],
     "deconnexion" => ["deconnexion", "FrontController"],
     "erreur401" => ["erreur401", "ErreurController"],
+    "admin/projet" => ["projet_index" , "BackController"],
+    "admin/user" => ["user_index" , "BackController"],
+    "admin/projet/new" => ["projet_new" , "BackController"]
 ]; 
 
 require_once "Model/BDD.php";

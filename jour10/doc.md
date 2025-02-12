@@ -50,5 +50,17 @@ password VARCHAR(255)
 role VARCHAR(255) DEFAULT redacteur
 dt_creation DATETIME DEFAULT maintenant 
 
-- 
-- 
+## cas pratique
+
+- pour le lien "Gestion des Utilisateurs"
+- créer la page qui contiendra
+    - la barre latérale "Menu Dashboard"
+    - la partie centrale tableau qui fait la liste des profils users en base de données
+        - ce tableau contient les colonnes suivantes
+            - id
+            - email
+            - role
+            - dt_creation
+            - actions
+
+=> refaire ce que je viens de vous montrer => 11h50 => 12h00
