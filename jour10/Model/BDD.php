@@ -26,6 +26,9 @@ class BDD{
     public function query( string $sql  , array $params = []){
         $stmt = $this->connexion->prepare($sql);
         $stmt->execute($params);
+        if(str_starts_with($sql , "INSERT INTO")){
+            return $this->connexion->lastInsertId(); 
+        }
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     }
 
