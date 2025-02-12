@@ -31,6 +31,9 @@
                 </li>
                 <?php else : ?>
                 <li class="nav-item">
+                    <a href="http://192.168.33.10/jour10/index.php?page=admin/dashboard" class="nav-link">Back Office</a>
+                </li>
+                <li class="nav-item">
                     <a href="http://192.168.33.10/jour10/index.php?page=deconnexion" class="nav-link">Déconnexion</a>
                 </li>
                 <?php endif ?>
