@@ -38,7 +38,8 @@ $routes = [
     "admin/projet/new" => ["projet_new" , "BackController"],
     "admin/projet/delete" => ["projet_delete" , "BackController"],
     "admin/projet/update"  => ["projet_update" , "BackController"],
-    "admin/user/new" => [ "user_new" , "BackController" ]
+    "admin/user/new" => [ "user_new" , "BackController" ],
+    "admin/user/delete" => ["user_delete", "BackController"]
 ]; 
 
 require_once "Model/BDD.php";

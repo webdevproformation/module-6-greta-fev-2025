@@ -5,7 +5,7 @@
             <?php include("menu-back.php") ?>
         </div>
         <div class="col-9">
-            <a href="http://192.168.33.10/jour10/index.php?page=admin/user/new" class="btn btn-primary mb-3">Ajouter un nouveau profil utilisateur</a>
+            <a href="<?php echo URL ?>?page=admin/user/new" class="btn btn-primary mb-3">Ajouter un nouveau profil utilisateur</a>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -24,10 +24,10 @@
                             <td><?php echo $user["role"] ?></td>
                             <td><?php echo $user["dt_creation"] ?></td>
                             <td>
-                                <a href="http://192.168.33.10/jour10/index.php?page=admin/user/update&id=<?php echo $user["id"]?>" class="btn btn-secondary btn-sm me-3">
+                                <a href="<?php echo URL ?>?page=admin/user/update&id=<?php echo $user["id"]?>" class="btn btn-secondary btn-sm me-3">
                                     update
                                 </a>
-                                <a href="http://192.168.33.10/jour10/index.php?page=admin/user/delete&id=<?php echo $user["id"]?>" class="btn btn-danger btn-sm">
+                                <a href="<?php echo URL ?>?page=admin/user/delete&id=<?php echo $user["id"]?>" class="btn btn-danger btn-sm">
                                     delete
                                 </a>
                             </td>

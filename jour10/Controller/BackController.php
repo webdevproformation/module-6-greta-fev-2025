@@ -260,4 +260,110 @@ class BackController extends AbstractController
 
         $this->render("back/users_index", $data);
     }
+
+
+    public function user_new(){
+
+        $id = "";
+        $email = "";
+        $password = "";
+        $role = ""; 
+        $erreurs = [];
+
+        if(!empty($_POST)){
+            $email = isset($_POST["email"]) ? $_POST["email"] : $email ;
+            $password = isset($_POST["password"]) ? $_POST["password"] : $password ;
+            $role = isset($_POST["role"]) ? $_POST["role"] : $role ;
+
+            if(!filter_var($email , FILTER_VALIDATE_EMAIL)){
+                $erreurs[] = "l'email n'est pas conforme"; 
+            }      
+            
+            if(!preg_match("#(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}#", $password)){
+                $erreurs[] = "le password doit contenir au minimum 8 lettres avec minuscule, majuscule et chiffre"; 
+            }
+
+            $user = BDD::getInstance()->query("SELECT * FROM user WHERE email = :email" , ["email" => $email]);
+            if(!empty($user)){
+                $erreurs[] = "l'email soumis est déjà utilisé, veuillez en choisir un autre"; 
+            }
+
+            $roles = ["redacteur", "admin"];
+            if(!in_array($role, $roles)){
+                $erreurs[] = "veuillez sélectionner un role dans le menu déroulant"; 
+            }
+
+        }
+
+        if(count($erreurs) === 0 && !empty($_POST)){
+
+            BDD::getInstance()->query("INSERT INTO user (email , password, role) VALUES (:email , :password , :role)", [
+                "email" => $email ,
+                "password" => password_hash($password, PASSWORD_BCRYPT),
+                "role" => $role
+            ] );
+
+            header("Location: " . URL . "?page=admin/user");
+            die(); 
+        }
+
+        $data = [
+            "titre" => "créer un nouveau profil utilisateur",
+            "data_form" => [
+                "id" => $id,
+                "email" => $email,
+                "password" => $password,
+                "role" => $role
+            ],
+            "erreurs" => $erreurs
+        ];
+        $this->render("back/user_form" , $data); 
+    }
+
+    public function user_delete(string $id){
+
+       $user = BDD::getInstance()->query("SELECT * FROM user WHERE id = :id" , [ "id" => $id ]);
+
+        if(empty($user)){
+            $data = [
+                "titre" => "impossible de supprimer le profil utilisateur",
+                "contenu" => [
+                    "num" => 404,
+                    "message" => "le profil que vous souhaitez supprimer n'existe pas"
+                ]
+                ];
+            $this->render("erreur" , $data);
+            die(); 
+        }
+
+        // impossible pour un utilisateur de supprimer son propre compte 
+        if($user[0]["email"] == $_SESSION["user"]["email"]){
+            $data = [
+                "titre" => "impossible de s'auto supprimé",
+                "contenu" => [
+                    "num" => 403,
+                    "message" => "vous ne pouvez pas supprimer votre propre compte"
+                ]
+            ];
+            $this->render("erreur" , $data);
+            die(); 
+        }
+
+        if($_SESSION["user"]["role"] != "admin"){
+            $data = [
+                "titre" => "vous n'avez pas suffisament de droit",
+                "contenu" => [
+                    "num" => 403,
+                    "message" => "vous devez être admin pour supprimer un compte utilisateur"
+                ]
+            ];
+            $this->render("erreur" , $data);
+            die(); 
+        }
+        
+        BDD::getInstance()->query("DELETE FROM user WHERE id = :id" , ["id" => $id]);
+
+        header("Location:" . URL . "?page=admin/user");
+
+    }
 }
