@@ -1,5 +1,17 @@
 <?php 
+
 session_start(); 
+
+function flash(){
+    if(isset($_SESSION['flash'])) {
+        $message = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        return $message ; 
+    }
+}
+
+define("URL", "http://192.168.33.10/jour10/index.php");
+
 
 $page = ""; 
 // http://192.123.123.123/index.php?page=home
@@ -25,7 +37,8 @@ $routes = [
     "admin/user" => ["user_index" , "BackController"],
     "admin/projet/new" => ["projet_new" , "BackController"],
     "admin/projet/delete" => ["projet_delete" , "BackController"],
-    "admin/projet/update"  => ["projet_update" , "BackController"]
+    "admin/projet/update"  => ["projet_update" , "BackController"],
+    "admin/user/new" => [ "user_new" , "BackController" ]
 ]; 
 
 require_once "Model/BDD.php";
@@ -47,4 +60,5 @@ if(array_key_exists($page , $routes)){
     $p = new ErreurController();
     $p->erreur(404 , "la page demandée n'existe pas");
 }
+
 // http://192.168.33.10/jour10/index.php

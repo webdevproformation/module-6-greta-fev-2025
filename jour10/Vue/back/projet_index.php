@@ -5,6 +5,9 @@
             <?php include ("menu-back.php") ?>
         </div>
         <div class="col-9">
+            <?php if(isset($_SESSION["flash"])) : ?>
+                <div class="alert bg-success text-white"><?php echo flash() ?> </div>
+            <?php endif ?>
             <a href="http://192.168.33.10/jour10/index.php?page=admin/projet/new" class="btn btn-primary mb-3">Ajouter un nouveau projet</a>
             <table class="table table-striped table-bordered">
                 <thead>

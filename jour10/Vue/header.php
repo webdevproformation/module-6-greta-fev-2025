@@ -14,27 +14,27 @@
             </span>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php" class="nav-link">Home</a>
+                    <a href="<?php echo URL ?>" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=presentation" class="nav-link">Présentation</a>
+                    <a href="<?php echo URL ?>?page=presentation" class="nav-link">Présentation</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=contact" class="nav-link">Nous contacter</a>
+                    <a href="<?php echo URL ?>?page=contact" class="nav-link">Nous contacter</a>
                 </li>
                 <?php if( !isset($_SESSION["user"]) ) : ?>
                  <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=inscription" class="nav-link">Inscription</a>
+                    <a href="<?php echo URL ?>?page=inscription" class="nav-link">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=connexion" class="nav-link">Connexion</a>
+                    <a href="<?php echo URL ?>?page=connexion" class="nav-link">Connexion</a>
                 </li>
                 <?php else : ?>
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=admin/dashboard" class="nav-link">Back Office</a>
+                    <a href="<?php echo URL ?>?page=admin/dashboard" class="nav-link">Back Office</a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://192.168.33.10/jour10/index.php?page=deconnexion" class="nav-link">Déconnexion</a>
+                    <a href="<?php echo URL ?>?page=deconnexion" class="nav-link">Déconnexion</a>
                 </li>
                 <?php endif ?>
             </ul>

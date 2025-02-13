@@ -7,7 +7,7 @@ class BackController extends AbstractController
     public function __construct()
     {
         if(!isset($_SESSION["user"])){
-            header("Location: http://192.168.33.10/jour10/index.php?page=erreur401");
+            header("Location: ". URL ."?page=erreur401");
             die(); 
         }
     }
@@ -92,7 +92,7 @@ class BackController extends AbstractController
                 ]);
             }
 
-            header("Location: http://192.168.33.10/jour10/index.php?page=admin/projet");
+            header("Location: " . URL . "?page=admin/projet");
             die(); // BRAVO !!! fin du formulaire !!! 
             // pause rdv à 15h55 @ toute suite !!!!!!!!!!!! 
         }
@@ -141,7 +141,7 @@ class BackController extends AbstractController
         // supprimer la ligne dans la table projets 
         BDD::getInstance()->query("DELETE FROM projets WHERE id = :id" , ["id" => $id]);
 
-        header("Location: http://192.168.33.10/jour10/index.php?page=admin/projet");
+        header("Location: ". URL ."?page=admin/projet");
 
     }
 
@@ -223,8 +223,8 @@ class BackController extends AbstractController
                     "techno_id" => $techno_id
                 ]);
             }
-
-            header("Location: http://192.168.33.10/jour10/index.php?page=admin/projet");
+            $_SESSION["flash"]= "le projet a bien été mis à jour";
+            header("Location: ". URL . "?page=admin/projet");
             die(); 
         }
         

@@ -82,7 +82,7 @@ class FrontController extends AbstractController {
                     "email" => $user[0]["email"],
                     "role" => $user[0]["role"]
                 ];
-                header("Location: http://192.168.33.10/jour10/index.php?page=admin/dashboard");
+                header("Location: ". URL ."?page=admin/dashboard");
                 die();
             }
         }
@@ -133,12 +133,10 @@ class FrontController extends AbstractController {
 
             // double authentification
         }
-
         // var_dump($erreurs); 
         // si c'est conforme => INSERT INTO user  (attention le password DOIT être hashé)
         $success = [];
         if(count($erreurs) === 0 && !empty($_POST)){
-            
             BDD::getInstance()->query("INSERT INTO user (email , password) VALUES (:email , :password)" , [
                     "email" =>  $_POST["email"],
                     "password" => password_hash($_POST["password"] , PASSWORD_BCRYPT)
@@ -164,7 +162,7 @@ class FrontController extends AbstractController {
     public function deconnexion(){
         unset($_SESSION["user"]);
         session_destroy();
-        header("Location: http://192.168.33.10/jour10/index.php?page=connexion");
+        header("Location: ". URL ."?page=connexion");
     }
 
 
