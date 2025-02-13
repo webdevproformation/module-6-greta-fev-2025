@@ -417,7 +417,6 @@ class BackController extends AbstractController
             if(!in_array($role, $roles)){
                 $erreurs[] = "veuillez sélectionner un role dans le menu déroulant"; 
             }
-
         }
 
         if(count($erreurs) === 0 && !empty($_POST)){
