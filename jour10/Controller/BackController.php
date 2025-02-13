@@ -366,4 +366,88 @@ class BackController extends AbstractController
         header("Location:" . URL . "?page=admin/user");
 
     }
+
+
+    public function user_update(string $id){
+
+        $user = BDD::getInstance()->query("SELECT * FROM user WHERE id = :id" , [ "id" => $id ]);
+
+        if(empty($user)){
+            $data = [
+                "titre" => "impossible de supprimer le profil utilisateur",
+                "contenu" => [
+                    "num" => 404,
+                    "message" => "le profil que vous souhaitez supprimer n'existe pas"
+                ]
+                ];
+            $this->render("erreur" , $data);
+            die(); 
+        }
+
+
+        $email = $user[0]["email"];
+        $password = "";
+        $role = $user[0]["role"]; 
+        $erreurs = [];
+
+        if(!empty($_POST)){
+            $email = isset($_POST["email"]) ? $_POST["email"] : $email ;
+            $password = isset($_POST["password"]) ? $_POST["password"] : $password ;
+            $role = isset($_POST["role"]) ? $_POST["role"] : $role ;
+
+            if(!filter_var($email , FILTER_VALIDATE_EMAIL)){
+                $erreurs[] = "l'email n'est pas conforme"; 
+            }      
+            
+            if(strlen($password) != 0 && !preg_match("#(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}#", $password)){
+                $erreurs[] = "le password doit contenir au minimum 8 lettres avec minuscule, majuscule et chiffre"; 
+            }
+
+            $user = BDD::getInstance()->query("SELECT * FROM user WHERE email = :email" , ["email" => $email]);
+            if(!empty($user) || $_SESSION["user"]["email"] == $email){
+                $erreurs[] = "l'email soumis est déjà utilisé, veuillez en choisir un autre"; 
+            }
+
+            $roles = ["redacteur", "admin"];
+            if(!in_array($role, $roles)){
+                $erreurs[] = "veuillez sélectionner un role dans le menu déroulant"; 
+            }
+
+        }
+
+        if(count($erreurs) === 0 && !empty($_POST)){
+
+            if(strlen($password) === 0){
+                BDD::getInstance()->query("UPDATE user SET email = :email ,  role = :role WHERE id = :id", [
+                    "id" => $id, 
+                    "email" => $email ,
+                    "role" => $role
+                ] );
+            }else {
+                BDD::getInstance()->query("UPDATE user SET email = :email ,  role = :role , password = :password WHERE id = :id", [
+                    "id" => $id, 
+                    "email" => $email ,
+                    "password" => password_hash($password, PASSWORD_BCRYPT),
+                    "role" => $role
+                ] );
+            }
+
+           
+
+            header("Location: " . URL . "?page=admin/user");
+            die(); 
+        }
+
+        $data = [
+            "titre" => "créer un nouveau profil utilisateur",
+            "data_form" => [
+                "id" => $id,
+                "email" => $email,
+                "password" => $password,
+                "role" => $role
+            ],
+            "erreurs" => $erreurs
+        ];
+        $this->render("back/user_form" , $data); 
+    }
 }
