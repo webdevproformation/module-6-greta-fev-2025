@@ -403,8 +403,13 @@ class BackController extends AbstractController
                 $erreurs[] = "le password doit contenir au minimum 8 lettres avec minuscule, majuscule et chiffre"; 
             }
 
-            $user = BDD::getInstance()->query("SELECT * FROM user WHERE email = :email" , ["email" => $email]);
-            if(!empty($user) || $_SESSION["user"]["email"] == $email){
+            $user = BDD::getInstance()->query("SELECT * FROM user WHERE email = :email_form AND id = :id" , [
+                "email_form" => $email  ,
+                "id" => $id
+                ]
+            );
+
+            if(count($user) !== 1 && $_SESSION["user"]["email"] !== $email ){
                 $erreurs[] = "l'email soumis est déjà utilisé, veuillez en choisir un autre"; 
             }
 
@@ -432,14 +437,12 @@ class BackController extends AbstractController
                 ] );
             }
 
-           
-
             header("Location: " . URL . "?page=admin/user");
             die(); 
         }
 
         $data = [
-            "titre" => "créer un nouveau profil utilisateur",
+            "titre" => "mise à jour d'un profil utilisateur",
             "data_form" => [
                 "id" => $id,
                 "email" => $email,
