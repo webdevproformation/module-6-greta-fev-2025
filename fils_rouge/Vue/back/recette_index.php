@@ -37,7 +37,7 @@
                             <td  class="text-center"><?php echo $recette["is_publie"] == 1 ? "✅" : "❌" ?></td>
                             <td style="width:155px">
                                 <a href="<?php echo URL ?>?page=admin/recettes/update&id=<?php echo $recette["id"] ?>" class="btn btn-secondary me-3  btn-sm">update</a>
-                                <a href="<?php echo URL ?>?page=admin/recettes/delete&id=<?php echo $recette["id"] ?>" class="btn btn-danger btn-sm">delete</a>
+                                <a href="<?php echo URL ?>?page=admin/recettes/delete&id=<?php echo $recette["id"] ?>" class="btn btn-danger btn-sm"  onclick="return confirm('êtes vous sûr de vouloir supprimer?')">delete</a>
                             </td>
                         </tr>
                     <?php endforeach ?>

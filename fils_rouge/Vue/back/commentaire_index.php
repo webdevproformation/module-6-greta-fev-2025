@@ -32,7 +32,7 @@
                             <td><?php echo more($commentaire["dt_creation"]) ?></td>
                             <td style="width:155px">
                                 <a href="<?php echo URL ?>?page=admin/commentaires/update&id=<?php echo $commentaire["id"] ?>" class="btn btn-secondary me-3  btn-sm">update</a>
-                                <a href="<?php echo URL ?>?page=admin/commentaires/delete&id=<?php echo $commentaire["id"] ?>" class="btn btn-danger btn-sm">delete</a>
+                                <a href="<?php echo URL ?>?page=admin/commentaires/delete&id=<?php echo $commentaire["id"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('êtes vous sûr de vouloir supprimer?')">delete</a>
                             </td>
                         </tr>
                         <!-- google => 3w validator -->

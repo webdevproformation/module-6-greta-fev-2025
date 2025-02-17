@@ -31,7 +31,7 @@
                                 <a href="<?php echo URL ?>?page=admin/user/update&id=<?php echo $user["id"]?>" class="btn btn-secondary btn-sm me-3">
                                     update
                                 </a>
-                                <a href="<?php echo URL ?>?page=admin/user/delete&id=<?php echo $user["id"]?>" class="btn btn-danger btn-sm">
+                                <a href="<?php echo URL ?>?page=admin/user/delete&id=<?php echo $user["id"]?>" class="btn btn-danger btn-sm" onclick="return confirm('êtes vous sûr de vouloir supprimer?')">
                                     delete
                                 </a>
                             </td>

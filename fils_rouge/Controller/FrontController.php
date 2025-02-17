@@ -11,16 +11,18 @@ class FrontController extends AbstractController {
 
     public function home(?string $id = "1")
     {
-
-
+        // math pour gérer la pagination 
         $nb_recettes_par_page = 8 ;
         $id = $id == null ? 0 : (int)$id - 1 ; 
+        // pour la requête SQL qui permet d'afficher les recettes
+        // valeur de départ $start et du nombre de recette $end
         $start = $id * $nb_recettes_par_page ;
         $end = $nb_recettes_par_page ;
 
         $count_page = BDD::getInstance()->query("SELECT id FROM recettes AS r WHERE r.is_publie = 1");
         $max_page = ceil( count($count_page) / $nb_recettes_par_page );
 
+        // si l'id demandé est négatif OU supérieur au maximum erreur 404
         if($id < 0  && $id !== null || $id > $max_page -1 ){
             $data = [
                 "titre" => "impossible d'afficher cette page",
@@ -33,9 +35,6 @@ class FrontController extends AbstractController {
             die(); 
         }
 
-
-        
-
         $sql = "SELECT r.id , r.titre, r.description, r.url_img , c.nom  AS categorie
             FROM recettes AS r
             JOIN categories AS c
@@ -45,8 +44,6 @@ class FrontController extends AbstractController {
             LIMIT $start , $end
             " ;
         
-        
-
         $data = [
             "titre" => "page d'accueil",
             "recettes" => BDD::getInstance()->query( $sql ) ,
@@ -106,7 +103,7 @@ class FrontController extends AbstractController {
                 "recette_id" => $id
             ]);
 
-            header("Location: " . URL . "?page=single&id=". $id);
+            header("Location: " . URL . "?page=single&id=". $id . "#commentaires");
         }
 
 
@@ -155,6 +152,7 @@ class FrontController extends AbstractController {
             }
 
             if(count($erreurs) === 0){
+                // session 
                 $_SESSION["user"] = [
                     "email" => $user[0]["email"],
                     "role" => $user[0]["role"],
@@ -218,7 +216,6 @@ class FrontController extends AbstractController {
         session_destroy();
         header("Location: ". URL ."?page=connexion");
     }
-
 
     public function mention_legale(){
         $data = [

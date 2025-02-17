@@ -1,4 +1,4 @@
-(async function() {
+
     const g = document.getElementById('graph')
 
     const data = [
@@ -81,4 +81,3 @@
         }
       }
     );
-  })();

@@ -37,7 +37,7 @@
     <?php endforeach ?> 
     <?php if(count($commentaires) > 0) : ?>
         <hr>
-        <h2><?php echo count($commentaires) ?> Commentaire(s) existant(s) </h2>
+        <h2 id="commentaires"><?php echo count($commentaires) ?> Commentaire(s) existant(s) </h2>
         <section class="row">
             <?php foreach ($commentaires as $commentaire ) : ?>
                 <div class="col-12 mb-3">

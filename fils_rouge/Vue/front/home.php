@@ -27,7 +27,7 @@
 
     <section class="row">
         <?php foreach ( $recettes as $recette ) : ?>
-            <div class="col-3 mb-4">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
                 <article class="card h-100" >
                     <a href="<?php echo URL ?>?page=single&id=<?php echo $recette["id"] ?>" >
                     <img src="<?php echo $recette["url_img"] ?>" alt="" class="card-img-top object-fit-cover" height="230" loading="lazy">
@@ -54,7 +54,6 @@
         <div class="d-flex justify-content-center">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    
                     <?php for($i = 1 ; $i <=$max_page ; $i++) :?>
                         <li class="page-item">
                             <a class="page-link" href="<?php echo URL?>?id=<?php echo $i  ?>">
@@ -62,7 +61,6 @@
                             </a>
                         </li>
                     <?php endfor ?>
-                    
                 </ul>
             </nav>
         </div>

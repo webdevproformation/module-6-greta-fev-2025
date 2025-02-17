@@ -30,7 +30,7 @@
                             <td><?php echo $categorie["dt_creation"] ?></td>
                             <td style="width:155px">
                                 <a href="<?php echo URL ?>?page=admin/categories/update&id=<?php echo $categorie["id"] ?>" class="btn btn-secondary me-3  btn-sm">update</a>
-                                <a href="<?php echo URL ?>?page=admin/categories/delete&id=<?php echo $categorie["id"] ?>" class="btn btn-danger btn-sm">delete</a>
+                                <a href="<?php echo URL ?>?page=admin/categories/delete&id=<?php echo $categorie["id"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('êtes vous sûr de vouloir supprimer?')">delete</a>
                             </td>
                         </tr>
                         <!-- google => 3w validator -->
