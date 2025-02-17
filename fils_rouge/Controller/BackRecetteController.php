@@ -26,10 +26,10 @@ class BackRecetteController extends AbstractController{
         $param = [];
 
         if(isAdmin()){
-            $sql .= "GROUP BY r.id";
+            $sql .= "GROUP BY r.id DESC";
         }else {
             $sql .= "WHERE r.user_id = :id
-            GROUP BY r.id";
+            GROUP BY r.id DESC";
             $param= ["id" => $_SESSION["user"]["id"]];
         }
 

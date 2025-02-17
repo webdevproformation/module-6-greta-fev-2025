@@ -40,7 +40,7 @@ class FrontController extends AbstractController {
             JOIN categories AS c
             ON r.categorie_id = c.id
             WHERE r.is_publie = 1
-            ORDER BY r.id
+            ORDER BY r.id DESC
             LIMIT $start , $end
             " ;
         
